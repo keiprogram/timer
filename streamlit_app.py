@@ -69,12 +69,12 @@ while st.session_state["timer_active"]:
     elapsed_time = (datetime.now() - st.session_state["start_time"]).seconds
     remaining_time = focus_time * 60 - elapsed_time  # 残り時間の計算
     if remaining_time <= 0:
-        timer_display.write("⏰ 集中時間終了！休憩時間に入りましょう。")
+        timer_display.markdown("<h1 style='text-align: center; color: red;'>⏰ 集中時間終了！休憩時間に入りましょう。</h1>", unsafe_allow_html=True)
         reset_timer()  # タイマーをリセット
         break
     else:
         minutes, seconds = divmod(remaining_time, 60)
-        timer_display.write(f"残り時間: {minutes}分 {seconds}秒")
+        timer_display.markdown(f"<h1 style='text-align: center; font-size: 72px;'>{minutes}分 {seconds}秒</h1>", unsafe_allow_html=True)
         time.sleep(1)  # 1秒ごとに更新
 
 # タイマー停止時の表示
